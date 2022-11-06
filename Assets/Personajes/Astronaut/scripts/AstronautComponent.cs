@@ -34,7 +34,7 @@ namespace Assets.Personajes.Astronaut.scripts
             {
                 Destroy(other.gameObject);
                 entity.plankCount++;
-                if(entity.plankCount >= 8)
+                if(entity.plankCount >= 3)
                 {
                     GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
                     GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();

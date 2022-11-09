@@ -17,10 +17,10 @@ public class Spawner : MonoBehaviour
     {
         counter++;
         Debug.Log(varAM.MeteoroActived);
-        if (counter >= 30 && varAM.MeteoroActived == true)
+        if (counter >= 20 && varAM.MeteoroActived == true)
         {
 
-            Vector3 ramdomSpawnPosition = new Vector3(Random.Range(-40,-20),5, Random.Range(-7, -23));
+            Vector3 ramdomSpawnPosition = new Vector3(Random.Range(-50,-5),10, Random.Range(-0, -26));
             Instantiate(meteoro, ramdomSpawnPosition, Quaternion.identity);
             counter = 0;
         }

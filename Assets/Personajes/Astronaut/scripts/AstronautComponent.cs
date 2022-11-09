@@ -29,18 +29,39 @@ namespace Assets.Personajes.Astronaut.scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            //Debug.Log(other.gameObject.tag);
+            
             if(other.gameObject.CompareTag("Plank"))
             {
                 Destroy(other.gameObject);
                 entity.plankCount++;
-                if(entity.plankCount >= 3)
+                if(entity.plankCount >= 5)
                 {
                     GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
                     GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
             }
+            if (other.gameObject.CompareTag("Rock"))
+            {
+                Destroy(other.gameObject);
+                entity.rockCount++;
+                if (entity.plankCount >= 8)
+                {
+                    //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
+                    //.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
+                }
+            }
+            if (other.gameObject.CompareTag("Sand"))
+            {
+                Destroy(other.gameObject);
+                entity.sandCount++;
+                if (entity.plankCount >= 10)
+                {
+                    //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
+                    //GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
+                }
+            }
         }
+
     }
 
 }

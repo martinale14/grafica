@@ -10,6 +10,7 @@ namespace Assets.Personajes.Astronaut.scripts
         public readonly float gravityScale = 0.8f;
         public Rigidbody rb;
         public int plankCount = 0;
+        public int life = 3;
 
         void Start()
         {

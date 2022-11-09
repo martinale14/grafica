@@ -9,6 +9,7 @@ namespace Assets.Personajes.Astronaut.scripts
     {
         private AstronautEntity entity;
         private MovementSystem movementSystem;
+        public Image imageUI;
 
         private void Start()
         {
@@ -40,7 +41,41 @@ namespace Assets.Personajes.Astronaut.scripts
                     GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
             }
+
+           
         }
-    }
+
+		private void OnCollisionEnter(Collision other)
+		{
+			 if (other.gameObject.CompareTag("Meteoro"))
+            {
+
+                Destroy(other.gameObject);
+                entity.life--;
+                Debug.Log(entity.life);
+                imageUI = GameObject.Find("lifeBar").GetComponent<Image>();
+                if (entity.life == 2)
+                {
+                    imageUI.sprite = Resources.Load<Sprite>("hud/yellowLife");
+                }
+                if (entity.life == 1)
+                {
+                    imageUI.sprite = Resources.Load<Sprite>("hud/redLife");
+                }
+                if (entity.life == 0)
+                {
+                    imageUI.sprite = Resources.Load<Sprite>("hud/noLife");
+                    /*
+                     * 
+                     * Aqui va lo del GameOver
+                     * 
+                     */
+                }
+            }
+		}
+
+
+
+	}
 
 }

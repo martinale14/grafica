@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         counter++;
-        Debug.Log(varAM.MeteoroActived);
+        //Debug.Log(varAM.MeteoroActived);
         if (counter >= 20 && varAM.MeteoroActived == true)
         {
 

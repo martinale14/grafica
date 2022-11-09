@@ -35,17 +35,27 @@ namespace Assets.Personajes.Astronaut.scripts
             {
                 Destroy(other.gameObject);
                 entity.plankCount++;
-                if(entity.plankCount >= 5)
+                if (entity.plankCount <= 5)
                 {
-                    GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
-                    GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
+                    imageUI = GameObject.Find("inventorySlot2").GetComponent<Image>();
+                    imageUI.sprite = Resources.Load<Sprite>("hud/icons/madera"+ entity.plankCount.ToString() + "_5");
+                }
+                if (entity.plankCount >= 5)
+                {
+                    //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
+                    //GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
             }
             if (other.gameObject.CompareTag("Rock"))
             {
                 Destroy(other.gameObject);
                 entity.rockCount++;
-                if (entity.plankCount >= 8)
+                if (entity.rockCount <= 8)
+                {
+                    imageUI = GameObject.Find("inventorySlot1").GetComponent<Image>();
+                    imageUI.sprite = Resources.Load<Sprite>("hud/icons/piedra" + entity.rockCount.ToString() + "_8");
+                }
+                if (entity.rockCount >= 8)
                 {
                     //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
                     //.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
@@ -55,7 +65,12 @@ namespace Assets.Personajes.Astronaut.scripts
             {
                 Destroy(other.gameObject);
                 entity.sandCount++;
-                if (entity.plankCount >= 10)
+                if (entity.sandCount <= 5)
+                {
+                    imageUI = GameObject.Find("inventorySlot3").GetComponent<Image>();
+                    imageUI.sprite = Resources.Load<Sprite>("hud/icons/arena" + entity.sandCount.ToString() + "_10");
+                }
+                if (entity.sandCount >= 10)
                 {
                     //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
                     //GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();

@@ -29,7 +29,7 @@ namespace Assets.Personajes.Astronaut.scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.gameObject.tag);
+            //Debug.Log(other.gameObject.tag);
             if(other.gameObject.CompareTag("Plank"))
             {
                 Destroy(other.gameObject);

@@ -12,6 +12,7 @@ namespace Assets.Personajes.Astronaut.scripts
         public int plankCount = 0;
         public int rockCount = 0;
         public int sandCount = 0;
+        public int life = 3;
 
         void Start()
         {

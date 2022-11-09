@@ -56,7 +56,7 @@ public class MovementSystem : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.gameObject.CompareTag("Map")) {
-            Debug.Log(collision.collider.gameObject.tag);
+            //Debug.Log(collision.collider.gameObject.tag);
             isJumping = false;
             GetComponent<Animator>().SetBool("isJumping", isJumping);
         }

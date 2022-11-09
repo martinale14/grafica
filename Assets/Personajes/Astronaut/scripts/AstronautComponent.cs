@@ -63,14 +63,9 @@ namespace Assets.Personajes.Astronaut.scripts
             }
         }
 
-    }
-
-           
-        }
-
-		private void OnCollisionEnter(Collision other)
-		{
-			 if (other.gameObject.CompareTag("Meteoro"))
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Meteoro"))
             {
 
                 Destroy(other.gameObject);
@@ -95,10 +90,8 @@ namespace Assets.Personajes.Astronaut.scripts
                      */
                 }
             }
-		}
+        }
 
-
-
-	}
+    }
 
 }

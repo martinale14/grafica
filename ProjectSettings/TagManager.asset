@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Map
   - Plank
+  - Meteoro
+  - Rock
+  - Sand
   layers:
   - Default
   - TransparentFX

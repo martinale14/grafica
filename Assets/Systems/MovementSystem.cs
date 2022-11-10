@@ -19,8 +19,8 @@ public class MovementSystem : MonoBehaviour
 
     public void Move(float speed, Rigidbody rb, float jumpForce)
     {
-        float translationX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float translationY = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float translationX = Input.GetAxis("Horizontal") * speed * Time.deltaTime * 2;
+        float translationY = Input.GetAxis("Vertical") * speed * Time.deltaTime * 2;
 
         Vector3 newPos = new(translationX, 0, translationY);
 
@@ -55,12 +55,15 @@ public class MovementSystem : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.gameObject.CompareTag("Map")) {
-            //Debug.Log(collision.collider.gameObject.tag);
+        if (collision.collider.gameObject.CompareTag("Map"))
+        {
             isJumping = false;
             GetComponent<Animator>().SetBool("isJumping", isJumping);
         }
+        if (collision.gameObject.CompareTag("Magma"))
+        {
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 8, ForceMode.Impulse);
+        }
     }
 
-    
 }

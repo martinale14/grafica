@@ -30,8 +30,13 @@ namespace Assets.Personajes.Astronaut.scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            
-            if(other.gameObject.CompareTag("Plank"))
+            if (other.gameObject.CompareTag("Ligth"))
+            {
+                Destroy(other.gameObject,1);
+             
+            }
+
+            if (other.gameObject.CompareTag("Plank"))
             {
                 Destroy(other.gameObject);
                 entity.plankCount++;
@@ -86,7 +91,30 @@ namespace Assets.Personajes.Astronaut.scripts
 
                 Destroy(other.gameObject);
                 entity.life--;
-                Debug.Log(entity.life);
+                //Debug.Log(entity.life);
+                imageUI = GameObject.Find("lifeBar").GetComponent<Image>();
+                if (entity.life == 2)
+                {
+                    imageUI.sprite = Resources.Load<Sprite>("hud/yellowLife");
+                }
+                if (entity.life == 1)
+                {
+                    imageUI.sprite = Resources.Load<Sprite>("hud/redLife");
+                }
+                if (entity.life == 0)
+                {
+                    imageUI.sprite = Resources.Load<Sprite>("hud/noLife");
+                    /*
+                     * 
+                     * Aqui va lo del GameOver
+                     * 
+                     */
+                }
+            }
+            if (other.gameObject.CompareTag("Magma"))
+            {
+
+                entity.life--;
                 imageUI = GameObject.Find("lifeBar").GetComponent<Image>();
                 if (entity.life == 2)
                 {

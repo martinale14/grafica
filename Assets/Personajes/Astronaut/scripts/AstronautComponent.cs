@@ -44,6 +44,7 @@ namespace Assets.Personajes.Astronaut.scripts
                 {
                     imageUI = GameObject.Find("inventorySlot2").GetComponent<Image>();
                     imageUI.sprite = Resources.Load<Sprite>("hud/icons/madera"+ entity.plankCount.ToString() + "_5");
+
                 }
                 if (entity.plankCount >= 5)
                 {

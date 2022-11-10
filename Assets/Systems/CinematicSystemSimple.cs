@@ -18,28 +18,24 @@ public class CinematicSystemSimple : MonoBehaviour
     {
         player = GetComponent<VideoPlayer>();
         next = GameObject.Find(nextRawImage);
-        audioS = GetComponent<AudioSource>();
+        
     }
 
     void Update()
     {
-        Cinem();
-    }
-
-    void Cinem()
-    {
-        if (player.time >= Math.Floor(player.length))
+        if(player.time >= Math.Floor(player.length))
         {
             player.Stop();
-            
+            audioS.Play();
+
             GetComponent<RawImage>().enabled = false;
             if (next != null)
             {
-                audioS.Stop();
+
                 next.GetComponent<VideoPlayer>().Play();
+                audioS.Stop();
             }
         }
-       
     }
 
 }

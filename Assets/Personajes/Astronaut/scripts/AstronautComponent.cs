@@ -64,22 +64,22 @@ namespace Assets.Personajes.Astronaut.scripts
                 if (entity.rockCount >= 8)
                 {
                     //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
-                    //.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
+                    //GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
             }
             if (other.gameObject.CompareTag("Sand"))
             {
                 Destroy(other.gameObject);
                 entity.sandCount++;
-                if (entity.sandCount <= 5)
+                if (entity.sandCount <= 10)
                 {
                     imageUI = GameObject.Find("inventorySlot3").GetComponent<Image>();
                     imageUI.sprite = Resources.Load<Sprite>("hud/icons/arena" + entity.sandCount.ToString() + "_10");
                 }
                 if (entity.sandCount >= 10)
                 {
-                    //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
-                    //GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
+                    GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
+                    GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
             }
         }

@@ -62,7 +62,7 @@ public class MovementSystem : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Magma"))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 8, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
     }
 

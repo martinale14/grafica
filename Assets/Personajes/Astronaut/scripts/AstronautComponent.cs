@@ -10,6 +10,14 @@ namespace Assets.Personajes.Astronaut.scripts
         private AstronautEntity entity;
         private MovementSystem movementSystem;
         public Image imageUI;
+        public GameObject Activate;
+        public GameObject Desactivate;
+        private bool plank=false;
+        private bool rock=false;
+        private bool sand=false;
+        private bool levelUp = false;
+
+
 
         private void Start()
         {
@@ -20,6 +28,7 @@ namespace Assets.Personajes.Astronaut.scripts
         void Update()
         {
             movementSystem.Move(entity.speed, entity.rb, entity.jumpForce);
+            NextLevel();
         }
 
         private void FixedUpdate()
@@ -46,8 +55,9 @@ namespace Assets.Personajes.Astronaut.scripts
                     imageUI.sprite = Resources.Load<Sprite>("hud/icons/madera"+ entity.plankCount.ToString() + "_5");
 
                 }
-                if (entity.plankCount >= 5)
+                if (entity.plankCount ==3)
                 {
+                    plank = true;
                     //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
                     //GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
@@ -61,8 +71,9 @@ namespace Assets.Personajes.Astronaut.scripts
                     imageUI = GameObject.Find("inventorySlot1").GetComponent<Image>();
                     imageUI.sprite = Resources.Load<Sprite>("hud/icons/piedra" + entity.rockCount.ToString() + "_8");
                 }
-                if (entity.rockCount >= 8)
+                if (entity.rockCount == 3)
                 {
+                    rock = true;
                     //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
                     //.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
@@ -71,13 +82,14 @@ namespace Assets.Personajes.Astronaut.scripts
             {
                 Destroy(other.gameObject);
                 entity.sandCount++;
-                if (entity.sandCount <= 5)
+                if (entity.sandCount <= 10)
                 {
                     imageUI = GameObject.Find("inventorySlot3").GetComponent<Image>();
                     imageUI.sprite = Resources.Load<Sprite>("hud/icons/arena" + entity.sandCount.ToString() + "_10");
                 }
-                if (entity.sandCount >= 10)
+                if (entity.sandCount == 3)
                 {
+                    sand = true;
                     //GameObject.Find("RawImageRecompensa").GetComponent<RawImage>().enabled = true;
                     //GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
@@ -134,6 +146,16 @@ namespace Assets.Personajes.Astronaut.scripts
                      */
                 }
             }
+        }
+        private void NextLevel() {
+            if (!levelUp) {            
+            if (sand && plank && rock) {
+                Desactivate.SetActive(false);
+                levelUp = true;
+
+            } 
+            }
+        
         }
 
     }

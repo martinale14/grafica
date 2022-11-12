@@ -11,10 +11,12 @@ public class CinematicSystem : MonoBehaviour
     private VideoPlayer player;
     private GameObject preLevel1;
     
+
     void Start()
     {
         player = GetComponent<VideoPlayer>();
         preLevel1 = GameObject.Find("RawImageLevel1");
+      
         player.Play();
     }
 
@@ -25,6 +27,8 @@ public class CinematicSystem : MonoBehaviour
             player.Stop();
             GetComponent<RawImage>().enabled = false;
             preLevel1.GetComponent<VideoPlayer>().Play();
+            
         }
+        
     }
 }

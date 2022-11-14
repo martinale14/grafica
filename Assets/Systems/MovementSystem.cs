@@ -10,7 +10,8 @@ public class MovementSystem : MonoBehaviour
     private float angle = 0;
     private bool isJumping = false;
     private Vector3 difference;
-
+   [SerializeField] private AudioSource jumpFx;
+ 
     void Start()
     {
         currentCam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -26,6 +27,7 @@ public class MovementSystem : MonoBehaviour
 
         if (Mathf.Abs(translationX) > 0.0f || Mathf.Abs(translationY) > 0.0f)
         {
+
             GetComponent<Animator>().SetBool("isRunning", true);
             angle = Vector3.Angle(Vector3.forward, newPos);
 
@@ -49,6 +51,7 @@ public class MovementSystem : MonoBehaviour
             isJumping = true;
             GetComponent<Animator>().SetBool("isJumping", true);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpFx.Play();
         }
 
     }
@@ -65,5 +68,4 @@ public class MovementSystem : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
     }
-
 }

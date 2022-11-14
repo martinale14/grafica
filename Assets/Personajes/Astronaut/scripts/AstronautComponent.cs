@@ -14,6 +14,7 @@ namespace Assets.Personajes.Astronaut.scripts
         private bool rock=false;
         private bool sand=false;
         private bool levelUp = false;
+        [SerializeField] private AudioSource collectFx;
 
 
 
@@ -44,6 +45,7 @@ namespace Assets.Personajes.Astronaut.scripts
 
             if (other.gameObject.CompareTag("Plank"))
             {
+                collectFx.Play();
                 Destroy(other.gameObject);
                 entity.plankCount++;
                 if (entity.plankCount <= 5)
@@ -61,6 +63,7 @@ namespace Assets.Personajes.Astronaut.scripts
             }
             if (other.gameObject.CompareTag("Rock"))
             {
+                collectFx.Play();
                 Destroy(other.gameObject);
                 entity.rockCount++;
                 if (entity.rockCount <= 8)
@@ -77,6 +80,7 @@ namespace Assets.Personajes.Astronaut.scripts
             }
             if (other.gameObject.CompareTag("Sand"))
             {
+                collectFx.Play();
                 Destroy(other.gameObject);
                 entity.sandCount++;
                 if (entity.sandCount <= 10)

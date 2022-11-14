@@ -8,12 +8,14 @@ public class ActiveMeteoro : MonoBehaviour
     public bool MeteoroActived = false ;
     public float timer = 0;
     private int time = 10; // Cuanto tiempo quiero que dure el timer
+    public AudioSource timerFX;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             MeteoroActived = true;
+           
         }
     }
 
@@ -21,17 +23,23 @@ public class ActiveMeteoro : MonoBehaviour
 	{
         if (MeteoroActived == true && timer > time * -1) {
             timer -= Time.deltaTime;
-
-            Debug.Log(timer);
+            
+            //Debug.Log(timer);
             GameObject.Find("timerBar").transform.localScale = new Vector3(4.2f,4.5f+(4.5f*(timer/time)));
         }
-        if (timer < time * -1) { 
+        if (timer < time * -1) {
             /*
              
              Aqui va lo de GameOver cuando del tiempo se acabe
              
              */
-        
+            
         }
 	}
+
+    public void sonidoReloj()
+    {
+        timerFX.Play();
+    }
+
 }

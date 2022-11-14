@@ -26,7 +26,9 @@ public class CinematicSystemSimple : MonoBehaviour
         if(player.time >= Math.Floor(player.length))
         {
             player.Stop();
-            audioS.Play();
+            if(audioS != null){
+                audioS.Play();
+            }
 
             GetComponent<RawImage>().enabled = false;
             if (next != null)

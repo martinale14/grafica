@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Video;
 
 namespace Assets.Personajes.Astronaut.scripts
 {
@@ -42,7 +40,6 @@ namespace Assets.Personajes.Astronaut.scripts
             if (other.gameObject.CompareTag("Ligth"))
             {
                 Destroy(other.gameObject,1);
-             
             }
 
             if (other.gameObject.CompareTag("Plank"))

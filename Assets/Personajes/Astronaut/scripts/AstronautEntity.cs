@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Personajes.Astronaut.scripts
 {
     public class AstronautEntity : MonoBehaviour
     {
+        public static UserModel user;
+
         public float speed = 1.0f;
         public float jumpForce = 1.0f;
         public readonly float gravityScale = 0.6f;
@@ -18,6 +19,5 @@ namespace Assets.Personajes.Astronaut.scripts
         {
             rb = GetComponent<Rigidbody>();
         }
-
     }
 }

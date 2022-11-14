@@ -7,6 +7,7 @@ public class MovementSystem : MonoBehaviour
 {
     
     private GameObject currentCam;
+    private GameObject checkpoint1;
     private float angle = 0;
     private bool isJumping = false;
     private Vector3 difference;
@@ -16,6 +17,7 @@ public class MovementSystem : MonoBehaviour
     {
         currentCam = GameObject.FindGameObjectWithTag("MainCamera");
         difference = currentCam.transform.position - transform.position;
+        checkpoint1 = GameObject.FindGameObjectWithTag("checkpoint");
     }
 
     public void Move(float speed, Rigidbody rb, float jumpForce)
@@ -65,7 +67,8 @@ public class MovementSystem : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Magma"))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 5, ForceMode.Impulse);
+            //GetComponent<Rigidbody>().AddForce(Vector3.up * 5, ForceMode.Impulse);
+            gameObject.transform.position = checkpoint1.transform.position;
         }
     }
 }

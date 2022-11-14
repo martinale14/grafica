@@ -16,12 +16,21 @@ namespace Assets.Personajes.Astronaut.scripts
         private bool levelUp = false;
         [SerializeField] private AudioSource collectFx;
 
+        public GameObject ButtonA;
+        public GameObject ButtonB;
+        public GameObject ButtonC;
 
 
         private void Start()
         {
             entity = GetComponent<AstronautEntity>();
             movementSystem = GetComponent<MovementSystem>();
+            ButtonA = GameObject.Find("ButtonA");
+            ButtonB = GameObject.Find("ButtonB");
+            ButtonC = GameObject.Find("ButtonC");
+            ButtonA.SetActive(false);
+            ButtonB.SetActive(false);
+            ButtonC.SetActive(false);
         }
 
         void Update()
@@ -95,6 +104,28 @@ namespace Assets.Personajes.Astronaut.scripts
                     //GameObject.Find("RawImageRecompensa").GetComponent<VideoPlayer>().Play();
                 }
             }
+            if (other.gameObject.CompareTag("rocaA"))
+            {
+                Destroy(other.gameObject);
+                imageUI = GameObject.Find("inventorySlot1_2").GetComponent<Image>();
+                imageUI.sprite = Resources.Load<Sprite>("hud/icons/rocaA_Obtenida");
+                ButtonA.SetActive(true);
+
+            }
+            if (other.gameObject.CompareTag("rocaB"))
+            {
+                Destroy(other.gameObject);
+                imageUI = GameObject.Find("inventorySlot2_2").GetComponent<Image>();
+                imageUI.sprite = Resources.Load<Sprite>("hud/icons/rocaB_Obtenida");
+                ButtonB.SetActive(true);
+            }
+            if (other.gameObject.CompareTag("rocaC"))
+            {
+                Destroy(other.gameObject);
+                imageUI = GameObject.Find("inventorySlot3_2").GetComponent<Image>();
+                imageUI.sprite = Resources.Load<Sprite>("hud/icons/rocaC_Obtenida");
+                ButtonC.SetActive(true);
+            }
         }
 
         private void OnCollisionEnter(Collision other)
@@ -106,15 +137,15 @@ namespace Assets.Personajes.Astronaut.scripts
                 entity.life--;
                 //Debug.Log(entity.life);
                 imageUI = GameObject.Find("lifeBar").GetComponent<Image>();
-                if (entity.life == 2)
+                if (entity.life == -3)
                 {
                     imageUI.sprite = Resources.Load<Sprite>("hud/yellowLife");
                 }
-                if (entity.life == 1)
+                if (entity.life == -6)
                 {
                     imageUI.sprite = Resources.Load<Sprite>("hud/redLife");
                 }
-                if (entity.life == 0)
+                if (entity.life == -9)
                 {
                     imageUI.sprite = Resources.Load<Sprite>("hud/noLife");
                     /*
@@ -129,15 +160,15 @@ namespace Assets.Personajes.Astronaut.scripts
 
                 entity.life--;
                 imageUI = GameObject.Find("lifeBar").GetComponent<Image>();
-                if (entity.life == 2)
+                if (entity.life == -3)
                 {
                     imageUI.sprite = Resources.Load<Sprite>("hud/yellowLife");
                 }
-                if (entity.life == 1)
+                if (entity.life == -6)
                 {
                     imageUI.sprite = Resources.Load<Sprite>("hud/redLife");
                 }
-                if (entity.life == 0)
+                if (entity.life == -12)
                 {
                     imageUI.sprite = Resources.Load<Sprite>("hud/noLife");
                     /*
@@ -151,6 +182,7 @@ namespace Assets.Personajes.Astronaut.scripts
         private void NextLevel() {
             if (!levelUp) {            
             if (sand && plank && rock) {
+                entity.life = 0;
                 Desactivate.SetActive(false);
                 levelUp = true;
 

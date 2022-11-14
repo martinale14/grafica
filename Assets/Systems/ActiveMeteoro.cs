@@ -7,8 +7,8 @@ public class ActiveMeteoro : MonoBehaviour
 {
     public bool MeteoroActived = false ;
     public float timer = 0;
-    private int time = 10; // Cuanto tiempo quiero que dure el timer
     public AudioSource timerFX;
+    private int time = 60; // Cuanto tiempo quiero que dure el timer
 
     private void OnTriggerEnter(Collider other)
     {
